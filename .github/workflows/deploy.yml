@@ -1,0 +1,31 @@
+name: "Deplot to remote VPS by SSH"
+
+on:
+  workflow.dispatch:
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    name: publish to github registry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+      packages: write
+    steps:
+    - name: multiple command
+      uses: appleboy/ssh-action@v1.2.0
+      with:`
+        host: ${{ secrets.HOST }}
+        username: root
+        key: ${{ secrets.KEY }}
+        port: 22
+        script:
+          cd /root/nodeChat
+          git pull
+          npm ci
+          node ./server.js
