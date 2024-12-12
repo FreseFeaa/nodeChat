@@ -17,7 +17,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: root
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.KEY }}
         port: 22
         script:
           cd /root/nodeChat
