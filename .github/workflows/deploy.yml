@@ -19,7 +19,7 @@ jobs:
         username: root
         password: ${{ secrets.KEY }}
         port: 22
-        script:
+        script: |
           cd /root/nodeChat
           git pull
           npm ci
