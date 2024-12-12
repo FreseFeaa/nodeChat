@@ -4,7 +4,7 @@ on:
 jobs:
   publish:
     name: publish to github registry
-    runs-on: ubuntu-latest
+    runs-on: host
     permissions:
       contents: write
       issues: write
